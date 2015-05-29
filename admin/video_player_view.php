@@ -39,6 +39,20 @@ function html_showvideo_players( $rows,  $pageNav,$sort,$cat_row){
 	</script>
 
 <div class="wrap">
+<?php $path_site2 = plugins_url("../images", __FILE__); ?>
+<div class="slider-options-head">
+		<div style="float: left;">
+			<div><a href="http://huge-it.com/wordpress-plugins-video-player-user-manual" target="_blank">User Manual</a></div>
+			<div>This section allows you to configure the Portfolio/Gallery options. <a href="http://huge-it.com/wordpress-plugins-video-player-user-manual" target="_blank">More...</a></div>
+		</div>
+		<div style="float: right;">
+			<a class="header-logo-text" href="http://huge-it.com/video-player" target="_blank">
+				<div><img width="250px" src="<?php echo $path_site2; ?>/huge-it1.png" /></div>
+				<div>Get the full version</div>
+			</a>
+		</div>
+		<div class="clear"></div>
+	</div>
 	<div id="poststuff">
 		<div id="video_players-list-page">
 			<form method="post"  onkeypress="doNothing()" action="admin.php?page=video_players_huge_it_video_player" id="admin_form" name="admin_form">
@@ -167,6 +181,20 @@ jQuery(function() {
 <!-- GENERAL PAGE, ADD IMAGES PAGE -->
 
 <div class="wrap">
+<?php $path_site2 = plugins_url("../images", __FILE__); ?>
+	<div class="slider-options-head">
+		<div style="float: left;">
+			<div><a href="http://huge-it.com/wordpress-plugins-portfolio-gallery-user-manual/" target="_blank">User Manual</a></div>
+			<div>This section allows you to configure the Portfolio/Gallery options. <a href="http://huge-it.com/wordpress-plugins-portfolio-gallery-user-manual/" target="_blank">More...</a></div>
+		</div>
+		<div style="float: right;">
+			<a class="header-logo-text" href="http://huge-it.com/portfolio-gallery/" target="_blank">
+				<div><img width="250px" src="<?php echo $path_site2; ?>/huge-it1.png" /></div>
+				<div>Get the full version</div>
+			</a>
+		</div>
+		<div class="clear"></div>
+	</div>
 <form action="admin.php?page=video_players_huge_it_video_player&id=<?php echo $row->id; ?>" method="post" name="adminForm" id="adminForm">
 
 	<div id="poststuff" >

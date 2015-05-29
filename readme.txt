@@ -1,10 +1,10 @@
 === Video Player ===
 Contributors: Huge-IT
 Donate link: http://huge-it.com/video-player/
-Tags: video, video player,
+Tags: video, video player, youtube Video Player, definition, HD, player, html5, html5 player, youtube videos, HTML5 video player, playlists, video embed, Video Player plugin, MP4, myvideo, playlist, video blog, html5 video, HTML5 video gallery, youtube widget, m4v, embed video, embed youtube, video playlist, video plugin, video sidebar widget, video widget, videos, youtube player, youtube playlist, youtube plugin, video HTML5,
 Requires at least: 3.0.1
 Tested up to: 4.2.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,7 +47,41 @@ Now you can set your Video Player options, images and use our Video Player.
 
 == Changelog ==
 
+= 1.0.1 =
+*  Bag fixed.
+
 = 1.0.0 =
 *  Adding a Video Player.
 
-==Step 1. Adding a Video Player==
+==Step 1. Creating Video Album==
+
+**Click on “Add new video album” and start creating**
+
+There are two ways to add video
+
+**Add Video From Url (YouTube/Vimeo or Custom Video).** Insert the link
+
+Title. Add title to video
+
+*  Image URL. Video url will automatically be added. You can change the link and replace the current video with another one
+
+**Upload Video** (from computer). Upload video file from your computer
+*  Title. Add title to video file
+
+Next to each Video and Thumbnail Image  you can find:
+
+*  Title. add title to video and thumbnail image
+*  URL. Add some external URL link to the video and thumbnail image
+
+### Step 2. Using Free Options
+
+On the right side of admin page you can find
+
+**Select The Video Player View**
+
+*  Player Name. Here you can make changes on player title
+*  Player Type. Choose to display as single videos or in album
+*  Playlist Layout. Choose where to place video player
+*  Autoplay. On will automatically play the video
+*  Video With (px).  Set width size for video player
+
