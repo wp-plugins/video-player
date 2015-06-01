@@ -58,7 +58,7 @@ We please you to be understanding. The money we get for pro license is expended 
 	<div style="clear:both;"></div>
 <div style="margin-left: -20px;" id="poststuff">
 		<div id="post-body-content" class="portfolio-options">
-			<img style="width: 100%;" src="<?php echo $path_site2; ?>/video_options.png">
+			<img style="width: 100%;" src="<?php echo $path_site2; ?>/video.player.general.options.jpg">
 		</div>
 </div>
 </div>

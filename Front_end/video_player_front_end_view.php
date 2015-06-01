@@ -246,15 +246,16 @@ function initializePlayer<?php echo $i; ?>(){
 function adjustWidthHeights<?php echo $i; ?>(){
 	var w=<?php echo $video_player[0]->width; ?>; 
 	if(jQuery("#player_container<?php echo $i; ?>").parent().width()<w){
+		vidbox<?php echo $i; ?>.style.width="100%";
 		var vh=vid<?php echo $i; ?>.offsetHeight;
 		var vhb=vh+30;
-		vidbox<?php echo $i; ?>.style.width="100%";
 		vidbox<?php echo $i; ?>.style.height=vhb+"px";
 		document.getElementById("video_player<?php echo $i; ?>").style.height=vh+"px";
 	}else{
+		vidbox<?php echo $i; ?>.style.width="<?php echo $video_player[0]->width; ?>px";
 		var vh=vid<?php echo $i; ?>.offsetHeight;
 		var vhb=vh+30;
-		vidbox<?php echo $i; ?>.style.width="<?php echo $video_player[0]->width; ?>px";
+		
 		vidbox<?php echo $i; ?>.style.height=vhb+"px";
 		document.getElementById("video_player<?php echo $i; ?>").style.height=vh+"px";
 	}
@@ -487,7 +488,7 @@ function setVolume<?php echo $i; ?>(e){
 	
 }
 function toggleFullScreen<?php echo $i; ?>(){
-	ff<?php echo $i; ?>(vidbox)
+	ff<?php echo $i; ?>(vidbox<?php echo $i; ?>);
 }
 function ff<?php echo $i; ?>(element)
 {
@@ -512,12 +513,15 @@ function requestFullScreen<?php echo $i; ?>(element)
         element.mozRequestFullScreen();
     else if (element.webkitRequestFullscreen)
         element.webkitRequestFullscreen();
-	vidbox<?php echo $i; ?>.style.width="100%";
-	vidbox<?php echo $i; ?>.style.height="100%";
-	document.getElementById("video_player<?php echo $i; ?>").style.width="100%";
-	document.getElementById("video_player<?php echo $i; ?>").style.height="100%";
-	vid<?php echo $i; ?>.style.width="100%";
-	vid<?php echo $i; ?>.style.height="100%";
+	setTimeout(function(){
+		vidbox<?php echo $i; ?>.style.width="100%";
+		vidbox<?php echo $i; ?>.style.height="100%";
+		document.getElementById("video_player<?php echo $i; ?>").style.width="100%";
+		document.getElementById("video_player<?php echo $i; ?>").style.height="100%";
+		vid<?php echo $i; ?>.style.width="100%";
+		vid<?php echo $i; ?>.style.height="100%";
+	},300);
+	
 	fullscreenbtn<?php echo $i; ?>.innerHTML='<i class="hugeicons hugeicons-compress"></i>';
 }
 
@@ -533,12 +537,10 @@ function cFullScreen<?php echo $i; ?>()
         document.webkitExitFullscreen();
 	vid<?php echo $i; ?>.style.width="100%";
 	vid<?php echo $i; ?>.style.height="auto";
-	videowidth =<?php echo $video_player[0]->width; ?>;
-	videoheight =vid<?php echo $i; ?>.offsetHeight;
-	vidbox<?php echo $i; ?>.style.width=videowidth+"px";
-	vidbox<?php echo $i; ?>.style.height=videoheight+30+"px";
-	document.getElementById("video_player<?php echo $i; ?>").style.width="100%";
-	document.getElementById("video_player<?php echo $i; ?>").style.height=videoheight+"px";
+	setTimeout(function(){
+		adjustWidthHeights<?php echo $i; ?>();
+	},100)
+	
 	
 	fullscreenbtn<?php echo $i; ?>.innerHTML='<i class="hugeicons hugeicons-expand"></i>';
 }
@@ -661,10 +663,18 @@ jQuery(document).ready(function(){
 	border:<?php echo $paramssld['video_pl_border_size']; ?>px solid #<?php echo $paramssld['video_pl_border_color']; ?>;
 	font-size:12px !important;
 	font-weight:normal !important;
+	text-shadow:none !important;
+	box-shadow:none !important
+	outline:none !important;
+	text-decoration:none !important;
 }
 
 #player_container<?php echo $i; ?> button {
 	color:#<?php echo $paramssld['video_pl_buttons_color']; ?> !important;
+	text-shadow:none !important;
+	box-shadow:none !important
+	outline:none !important;
+	text-decoration:none !important;
 }
 
 #player_container<?php echo $i; ?> button:hover {
@@ -1167,6 +1177,10 @@ $i=rand(1,1000);
 	border:<?php echo $paramssld['video_pl_border_size']; ?>px solid #<?php echo $paramssld['video_pl_border_color']; ?>;
 	font-size:12px !important;
 	font-weight:normal !important;
+	text-shadow:none !important;
+	box-shadow:none !important
+	outline:none !important;
+	text-decoration:none !important;
 }
 
 #video_player_box<?php echo $i; ?> i, #video_player_box<?php echo $i; ?> span {
@@ -1176,6 +1190,10 @@ $i=rand(1,1000);
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+	text-shadow:none !important;
+	box-shadow:none !important
+	outline:none !important;
+	text-decoration:none !important;
 }
 
 #player_container<?php echo $i; ?> {
@@ -1183,14 +1201,26 @@ $i=rand(1,1000);
 	float:left;
 	width:<?php echo $video_player[0]->width; ?>px;
 	overflow:hidden;
+	text-shadow:none !important;
+	box-shadow:none !important
+	outline:none !important;
+	text-decoration:none !important;
 }
 
 #player_container<?php echo $i; ?> button {
 	color:#<?php echo $paramssld['video_pl_buttons_color']; ?> !important;
+	text-shadow:none !important;
+	box-shadow:none !important
+	outline:none !important;
+	text-decoration:none !important;
 }
 
 #player_container<?php echo $i; ?> button:hover {
 	color:#<?php echo $paramssld['video_pl_buttons_hover_color']; ?> !important;
+	text-shadow:none !important;
+	box-shadow:none !important
+	outline:none !important;
+	text-decoration:none !important;
 }
 
 #huge_player_absolute<?php echo $i; ?> {
@@ -1209,6 +1239,10 @@ $i=rand(1,1000);
 	}
 	?>
 	width:<?php echo $video_player[0]->width; ?>px;
+	text-shadow:none !important;
+	box-shadow:none !important
+	outline:none !important;
+	text-decoration:none !important;
 }
 
 #video_player_box<?php echo $i; ?> input:focus {
@@ -1420,7 +1454,7 @@ div#video_controls_bar<?php echo $i; ?> {
 
 #durtimetext<?php echo $i; ?> { color:#<?php echo $paramssld['video_pl_durtime_color']; ?>; }
 
-#centerPlayPause<?php echo $i; ?> {
+#centerPlayPause<?php echo $i; ?><?php echo $i; ?> {
 	display:block;
 	position:absolute;
 	top:50%;
@@ -1442,7 +1476,6 @@ div#video_controls_bar<?php echo $i; ?> {
 	transition:opacity 1s ease;
 	overflow:hidden;
 	opacity:0.7;
-	text-align:left;
 }
 
 #centerPlayPausebtn<?php echo $i; ?> {
@@ -1506,7 +1539,6 @@ div#video_controls_bar<?php echo $i; ?> {
 	z-index:9;
 	background:#<?php echo $paramssld['video_pl_playlist_color']; ?>;
 	color:#<?php echo $paramssld['video_pl_playlist_text_color']; ?>;
-	text-align:left;
 }
 
 #playlist_container<?php echo $i; ?> > h3 {
@@ -1516,7 +1548,6 @@ div#video_controls_bar<?php echo $i; ?> {
 	font-size:15px;
 	height:17px;
 	font-weight:normal;
-	line-height:17px;
 }
 
 
@@ -1563,14 +1594,19 @@ div#video_controls_bar<?php echo $i; ?> {
 	background:none;
 	border:0;
 	padding:0px;
+	margin:0px;
 	box-shadow:none;
 	cursor:pointer;
 	overflow:hidden;
-  text-overflow: ellipsis;
-white-space: nowrap;
-color:#cacaca;
-font-size:12px !important;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color:#cacaca;
+	font-size:12px !important;
 	font-weight:normal !important;
+	text-shadow:none !important;
+	box-shadow:none !important
+	outline:none !important;
+	text-decoration:none !important;
 }
 
 #playlist_container<?php echo $i; ?> > ul > li > button:hover {
@@ -1595,6 +1631,10 @@ font-size:12px !important;
 	color:#cacaca;
 	font-size:12px !important;
 	font-weight:normal !important;
+	text-shadow:none !important;
+	box-shadow:none !important
+	outline:none !important;
+	text-decoration:none !important;
 }
 
 #yt_player_<?php echo $i; ?> {
@@ -1641,8 +1681,8 @@ font-size:12px !important;
 #vimeo_player_if_<?php echo $i; ?> {
 	position:absolute;
 	bottom:0px;
-	left:0px;
 	margin:0px;
+	left:0px;
 }
 </style>
 <script type="text/javascript">
@@ -1659,7 +1699,7 @@ function initializePlayer<?php echo $i; ?>(){
 	title<?php echo $i; ?>=document.getElementById("video_title_<?php echo $i; ?>");
 	fast_back<?php echo $i; ?>=document.getElementById("fast_back<?php echo $i; ?>");
 	fast_forward<?php echo $i; ?>=document.getElementById("fast_forward<?php echo $i; ?>");
-	centerbtn<?php echo $i; ?>=document.getElementById("centerPlayPause<?php echo $i; ?>");
+	centerbtn<?php echo $i; ?>=document.getElementById("centerPlayPause<?php echo $i; ?><?php echo $i; ?>");
 	centerwaiting<?php echo $i; ?>=document.getElementById("centerwaiting<?php echo $i; ?>");
 	slidebox<?php echo $i; ?>=document.getElementById("video_duration_slide<?php echo $i; ?>");
 	durationbar<?php echo $i; ?>=document.getElementById("durationbar<?php echo $i; ?>");
@@ -1759,7 +1799,6 @@ function initializePlayer<?php echo $i; ?>(){
 	// VIDEO FULLSCREEN TOGGLE***********************************
 	fullscreenbtn<?php echo $i; ?>.addEventListener("click",toggleFullScreen<?php echo $i; ?>,false);
 	//***********************************************************
-	
 	
 	
 	//KEY EVENTS**********************************************
@@ -1982,28 +2021,22 @@ function adjustWidthHeights<?php echo $i; ?>(){
 			}
 			break;
 	}
-	setTimeout(function(){
-		var type=jQuery("#playlist_container > ul > li.active").data("type");
+	var type=jQuery("#playlist_container > ul > li.active").data("type");
 	switch(type){
 		case "video":
 			var h=vid<?php echo $i; ?>.offsetHeight;
 			var hb=h+30;
 			document.getElementById("playlist_container<?php echo $i; ?>").style.height=hb+"px";
-			document.getElementById("playlist_container<?php echo $i; ?>").getElementsByTagName("ul")[0].style.height=hb-31+"px";
 			break;
 		case "youtube":
 			var h=<?php echo $video_player[0]->width*0.56 ?>;
 			document.getElementById("playlist_container<?php echo $i; ?>").style.height=hh+"px";
-			document.getElementById("playlist_container<?php echo $i; ?>").getElementsByTagName("ul")[0].style.height=h-31+"px";
 			break;
 		case "vimeo":
 			var h=<?php echo $video_player[0]->width*0.56 ?>;
-			document.getElementById("playlist_container<?php echo $i; ?>").style.height=h+"px";
-			document.getElementById("playlist_container<?php echo $i; ?>").getElementsByTagName("ul")[0].style.height=h-31+"px";
+			document.getElementById("playlist_container<?php echo $i; ?>").style.height=hh+"px";
 			break;
 	}
-	},150);
-	
 }
 	
 <?php
@@ -2063,7 +2096,7 @@ function onPlayerState<?php echo $i; ?>(state){
 	} 
 
 
-function exitHandler<?php echo $i; ?>(){                                   
+function exitHandler<?php echo $i; ?> (){                                   
 	if (isFullScreen<?php echo $i; ?>()){
 		console.log("");
 		// nothing _|_
@@ -2210,7 +2243,8 @@ function vidEnd<?php echo $i; ?>(){
 					document.getElementById("video_player<?php echo $i; ?>").style.height=w+"px";
 					document.getElementById("player_container<?php echo $i; ?>").style.height=wb+"px";
 					document.getElementById("huge_player_absolute<?php echo $i; ?>").style.height=wb+"px";
-					
+					document.getElementById("playlist_container<?php echo $i; ?>").style.height=wb+"px";
+					document.getElementById("playlist_container<?php echo $i; ?>").getElementsByTagName("ul")[0].style.height=wb-31+"px";
 				},100);
 				yy<?php echo $i; ?>.loadVideoById('');
 				document.getElementById("vimeo_player_if_<?php echo $i; ?>").src ="";
@@ -2255,9 +2289,10 @@ function vidEnd<?php echo $i; ?>(){
 				vid<?php echo $i; ?>.src="";
 				break;
 		}
+	adjustWidthHeights<?php echo $i; ?>();
 	setTimeout(function(){
 		adjustWidthHeights<?php echo $i; ?>();
-	},200);
+	},150);
 }
 
 function ChangeTrack(e){
@@ -2686,7 +2721,7 @@ var myCode = '<iframe width="560" height="315" src="//www.youtube.com/embed/'
 				<div id="timer_display<?php echo $i; ?>" unselectable="yes" onselectstart="return false" onmouseDown<?php echo $i; ?>="return false" ><span id="ttd<?php echo $i; ?>"></span><span id="pnt<?php echo $i; ?>"></span></div>
 			</div>
 			<div id="video_title_<?php echo $i; ?>" unselectable="yes" onselectstart="return false" onmouseDown<?php echo $i; ?>="return false" ><?php echo $videos[0]->name; ?></div>
-			<div id="centerPlayPause<?php echo $i; ?>" unselectable="yes" onselectstart="return false">
+			<div id="centerPlayPause<?php echo $i; ?><?php echo $i; ?>" unselectable="yes" onselectstart="return false">
 				<button id="centerPlayPausebtn<?php echo $i; ?>"><i class="hugeicons hugeicons-play-circle-o"></i></button>
 			</div>
 			<div id="centerwaiting<?php echo $i; ?>">

@@ -40,13 +40,13 @@ function html_showvideo_players( $rows,  $pageNav,$sort,$cat_row){
 
 <div class="wrap">
 <?php $path_site2 = plugins_url("../images", __FILE__); ?>
-<div class="slider-options-head">
+	<div class="slider-options-head">
 		<div style="float: left;">
-			<div><a href="http://huge-it.com/wordpress-plugins-video-player-user-manual" target="_blank">User Manual</a></div>
-			<div>This section allows you to configure the Portfolio/Gallery options. <a href="http://huge-it.com/wordpress-plugins-video-player-user-manual" target="_blank">More...</a></div>
+			<div><a href="http://huge-it.com/wordpress-plugins-portfolio-gallery-user-manual/" target="_blank">User Manual</a></div>
+			<div>This section allows you to configure the Portfolio/Gallery options. <a href="http://huge-it.com/wordpress-plugins-portfolio-gallery-user-manual/" target="_blank">More...</a></div>
 		</div>
 		<div style="float: right;">
-			<a class="header-logo-text" href="http://huge-it.com/video-player" target="_blank">
+			<a class="header-logo-text" href="http://huge-it.com/portfolio-gallery/" target="_blank">
 				<div><img width="250px" src="<?php echo $path_site2; ?>/huge-it1.png" /></div>
 				<div>Get the full version</div>
 			</a>
@@ -275,9 +275,9 @@ jQuery(document).ready(function($){
 </script>
 						<input type="hidden" name="imagess" id="_unique_name" />
 						<span class="wp-media-buttons-icon"></span>						
-						<a href="admin.php?page=video_players_huge_it_video_player&task=video_player_upload&id=<?php echo $_GET['id']; ?>&TB_iframe=1" class="button thickbox"  id="slideup3s" value="iframepop">
-							<span class="wp-media-buttons-icon"></span>Upload Video
-						</a>
+						<div class="huge-it-newuploader uploader button button-primary add-new-image">
+						<input type="button" class="button wp-media-buttons-icon" name="_unique_name_button" id="_unique_name_button" value="Upload Video" />
+						</div>
 						<a href="admin.php?page=video_players_huge_it_video_player&task=video_player_video&id=<?php echo $_GET['id']; ?>&TB_iframe=1" class="button button-primary add-video-slide thickbox"  id="slideup3s" value="iframepop">
 							<span class="wp-media-buttons-icon"></span>Add Video From Url
 						</a>

@@ -4,7 +4,7 @@
 Plugin Name: Huge IT Video Player
 Plugin URI: http://huge-it.com/video-player/
 Description: Inserting video on a page is a perfect way to supplement website with media content and expand the user’s interest in your site.
-Version: 1.0.1
+Version: 1.0.2
 Author: Huge-IT
 Author: http://huge-it.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
@@ -219,9 +219,13 @@ function huge_it_video_player_options_panel()
     $page_cat = add_menu_page('Theme page title', 'Video Player', 'manage_options', 'video_players_huge_it_video_player', 'video_players_huge_it_video_player', plugins_url('images/huge_it_video_player_logo_for_menu.png', __FILE__));
     $page_option = add_submenu_page('video_players_huge_it_video_player', 'General Options', 'General Options', 'manage_options', 'Options_video_player_styles', 'Options_video_player_styles');
 	add_submenu_page('video_players_huge_it_video_player', 'Featured Plugins', 'Featured Plugins', 'manage_options', 'huge_it__video_player_featured_plugins', 'huge_it__video_player_featured_plugins');
-	add_submenu_page( 'video_players_huge_it_video_player', 'Licensing', 'Licensing', 'manage_options', 'huge_it_video_player_Licensing', 'huge_it_video_player_Licensing');
+	add_submenu_page( 'video_players_huge_it_video_player', 'Licensing', 'Licensing', 'manage_options', 'huge_it_video_player_Licensing', 'huge_it_video_player_Licensing');	
 	add_action('admin_print_styles-' . $page_cat, 'huge_it_video_player_admin_script');
     add_action('admin_print_styles-' . $page_option, 'huge_it_video_player_option_admin_script');
+}
+function huge_it__video_player_featured_plugins()
+{
+	include_once("admin/huge_it_featured_plugins.php");
 }
 
 function huge_it_video_player_Licensing(){
@@ -243,11 +247,6 @@ Purchasing a license will add possibility to customize the general options  of t
 </ol>
 </div>
 <?php
-}
-
-function huge_it__video_player_featured_plugins()
-{
-	include_once("admin/huge_it_featured_plugins.php");
 }
 
 

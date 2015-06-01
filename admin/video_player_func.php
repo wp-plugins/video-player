@@ -464,7 +464,7 @@ if (isset($_POST['params'])) {
 INSERT INTO 
 
 `" . $table_name . "` ( `name`, `video_player_id`, `video_url_1`, `image_url`, `video_url_2`, `sl_type`, `ordering`, `published`) VALUES
-( '', '".$row->id."', '', '".$imagesnewupload."', '', 'video', '0', '1' )";
+( '', '".$row->id."', '".$imagesnewupload."', '', '', 'video', '0', '1' )";
 
       $wpdb->query($sql_2);
 		}	

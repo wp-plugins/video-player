@@ -4,7 +4,7 @@ Donate link: http://huge-it.com/video-player/
 Tags: video, video player, youtube Video Player, definition, HD, player, html5, html5 player, youtube videos, HTML5 video player, playlists, video embed, Video Player plugin, MP4, myvideo, playlist, video blog, html5 video, HTML5 video gallery, youtube widget, m4v, embed video, embed youtube, video playlist, video plugin, video sidebar widget, video widget, videos, youtube player, youtube playlist, youtube plugin, video HTML5,
 Requires at least: 3.0.1
 Tested up to: 4.2.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,9 @@ Now you can set your Video Player options, images and use our Video Player.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.0.2 =
+*  Bag fixed.
 
 = 1.0.1 =
 *  Bag fixed.
