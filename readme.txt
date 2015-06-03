@@ -15,6 +15,9 @@ Inserting video on a page is a perfect way to supplement website with media cont
 ### Wordpress Video Player
 
 * [Wordpress Video Player](http://huge-it.com/video-player/)
+* [Demo Video Player](http://huge-it.com/wordpress-plugins-video-player-demo/)
+* [Demo Video Player Admin](http://huge-it.com/wordpress-plugins-video-player-demo-admin/)
+* [User Video Player Manual](http://huge-it.com/wordpress-plugins-video-player-user-manual/)
 
 Inserting video on a page is a perfect way to supplement website with media content and expand the user’s interest in your site. 
 Huge-IT Video Player is extremely necessary video tool for your sites, which provides a wide range of different file formats. One of them is uploading your own video file, as well as video from some custom url, and also famous video sources like YouTube and Vimeo. Simply insert the link, and add thumbnail image. Due to our Video Player you can quickly and easily view your favorite videos. 
