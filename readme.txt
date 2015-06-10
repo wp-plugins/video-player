@@ -91,3 +91,93 @@ On the right side of admin page you can find
 *  Autoplay. On will automatically play the video
 *  Video With (px).  Set width size for video player
 
+### Step 3. Inserting Video Player Plugin 
+
+To insert Video Gallery plugin into your page/post or theme, simply copy/past the right shortcode in certain place. 
+[huge_it_video_player id="..."] For page/post
+<?php echo do_shortcode("[huge_it_video_player id='...']"); ?> For template
+In post&page you can also find special “Add Video Player” button,  which will add shotrcode automatically.
+
+### Step 4. General Options of Video Player
+
+From this section you can make all kind of design customization on Video Player. General Options are available for users with premium license 
+
+**Player Options**
+
+Player Background Color. Choose some color for your player background area
+
+Border Size. Select a number, and you will have border on player, bigger number - thicker border
+
+Border Color.Choose color for player border line
+
+Positioning. You can place the player on the center/right/left within theme container	
+
+Margin Top. Give margin on top of the player 
+
+Margin Bottom. Give marin to the bottom of the player
+
+Margin Right. Give margin on the right side of the player
+
+Margin Left. Give margin on the left  side of the player
+
+**Custom Player**
+
+Progress Bar Background Color. Decide the color for video progress bar
+
+Progress Bar Buffering Color. Decide buffering color on progress bar
+
+Progress Bar Slider Color. Decide the color of sliding speck on progress bar
+
+Progress Bar Color. Decide the color of already played part of progress bar
+
+Controls Panel Color. Set color on control panel of the player
+
+Buttons Color. Select color for buttons on control panel
+
+Buttons Hover Color. Choose other color of button while hover a mouse on it
+
+Current Time Text Color. Change the color of current time text
+
+Duration Time Text Color. Change the color of duration time text
+
+**Playlist Options**
+
+Playlist Background Color. Change color for playlist background in album mode
+
+Playlist Text Color. Change the color of text in playlist
+
+Playlist Hover Background Color. You can choose another color for playlist while hover a mouse on it
+
+Playlist Hover Text Color. Choose another color of playlist text, while hover a mouse on it
+
+Playlist Active Background Color. Choose the color for active video background on playlist
+
+Playlist Active Text Color. Choose color of active video name on playlist
+
+Playlist Title Color. Pick up a color for title of playlist
+
+Playlist Scrollbar Track Color. Change the color of playlist scroll bar
+
+Playlist Scrollbar Thumb Color. Pick up a color for scroll bar moving thumb
+
+Playlist Scrollbar Thumb Hover Color. Pick up a color for scroll bar moving thumb while hover a mouse on it
+
+**Youtube Player Options**
+
+Color. Choose color for youtube play track, white or red	
+				
+Theme. Decide a theme for youtube player, dark or light		
+		
+Annotations. When “off’ will hide annotation popup on video while watching
+  	
+Autohide. If “on” the player will show display and video playback controls during video whole duration	
+								
+Full Screen. This hides fullscreen ability	
+					
+Show Info. When “off” title of the video, like/dislike, share buttons all will be hide	
+					
+**Vimeo Player Options**
+
+Color. Choose color for play button and duration line on Vimeo player
+
+Portrait.	 When “off” will hide video information 
