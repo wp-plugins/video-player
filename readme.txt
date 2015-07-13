@@ -8,7 +8,7 @@ Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Inserting video on a page is a perfect way to supplement website with media content and expand the user’s interest in your site.
+Inserting video player on a page is a perfect way to supplement website with media content and expand the user’s interest in your site.
 
 == Description ==
 
@@ -51,17 +51,17 @@ Now you can set your Video Player options, images and use our Video Player.
 == Changelog ==
 
 = 1.0.2 =
-*  Bag fixed.
+*  Bug fixed.
 
 = 1.0.1 =
-*  Bag fixed.
+*  Bug fixed.
 
 = 1.0.0 =
 *  Adding a Video Player.
 
-==Step 1. Creating Video Album==
+==Step 1. Creating Video Album - Video Player==
 
-**Click on “Add new video album” and start creating**
+**Click on “Add new video album” and start creating - Video Player**
 
 There are two ways to add video
 
@@ -79,11 +79,11 @@ Next to each Video and Thumbnail Image  you can find:
 *  Title. add title to video and thumbnail image
 *  URL. Add some external URL link to the video and thumbnail image
 
-### Step 2. Using Free Options
+### Step 2. Using Free Options - Video Player
 
 On the right side of admin page you can find
 
-**Select The Video Player View**
+**Select The Video Player View - Video Player**
 
 *  Player Name. Here you can make changes on player title
 *  Player Type. Choose to display as single videos or in album
@@ -91,18 +91,18 @@ On the right side of admin page you can find
 *  Autoplay. On will automatically play the video
 *  Video With (px).  Set width size for video player
 
-### Step 3. Inserting Video Player Plugin 
+### Step 3. Inserting Video Player Plugin - Video Player
 
 To insert Video Gallery plugin into your page/post or theme, simply copy/past the right shortcode in certain place. 
 [huge_it_video_player id="..."] For page/post
 <?php echo do_shortcode("[huge_it_video_player id='...']"); ?> For template
 In post&page you can also find special “Add Video Player” button,  which will add shotrcode automatically.
 
-### Step 4. General Options of Video Player
+### Step 4. General Options of Video Player - Video Player
 
 From this section you can make all kind of design customization on Video Player. General Options are available for users with premium license 
 
-**Player Options**
+**Player Options - Video Player**
 
 Player Background Color. Choose some color for your player background area
 
@@ -120,7 +120,7 @@ Margin Right. Give margin on the right side of the player
 
 Margin Left. Give margin on the left  side of the player
 
-**Custom Player**
+**Custom Player - Video Player**
 
 Progress Bar Background Color. Decide the color for video progress bar
 
@@ -140,7 +140,7 @@ Current Time Text Color. Change the color of current time text
 
 Duration Time Text Color. Change the color of duration time text
 
-**Playlist Options**
+**Playlist Options - Video Player**
 
 Playlist Background Color. Change color for playlist background in album mode
 
@@ -162,7 +162,7 @@ Playlist Scrollbar Thumb Color. Pick up a color for scroll bar moving thumb
 
 Playlist Scrollbar Thumb Hover Color. Pick up a color for scroll bar moving thumb while hover a mouse on it
 
-**Youtube Player Options**
+**Youtube Player Options - Video Player**
 
 Color. Choose color for youtube play track, white or red	
 				
@@ -176,7 +176,7 @@ Full Screen. This hides fullscreen ability
 					
 Show Info. When “off” title of the video, like/dislike, share buttons all will be hide	
 					
-**Vimeo Player Options**
+**Vimeo Player Options - Video Player**
 
 Color. Choose color for play button and duration line on Vimeo player
 
