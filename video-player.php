@@ -4,7 +4,7 @@
 Plugin Name: Huge IT Video Player
 Plugin URI: http://huge-it.com/video-player/
 Description: Inserting video on a page is a perfect way to supplement website with media content and expand the user’s interest in your site.
-Version: 1.0.2
+Version: 1.0.3
 Author: Huge-IT
 Author: http://huge-it.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
