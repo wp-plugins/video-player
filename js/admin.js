@@ -23,4 +23,22 @@ jQuery(document).ready(function () {
 		jQuery('#gallery-current-options-'+jQuery(this).val()).addClass('active');
 	});
 	
+	jQuery("#images-list .set_default_thumbnail").on("click",function(){
+		var button=jQuery(this);
+		var type=button.data("video-type");
+		var video_id=button.data("video-id");
+		var data={
+			action:"video_player_ajax",
+			task:"get_video_thumb_from_id",
+			type:type,
+			video_id:video_id
+		}
+		jQuery.post(ajax_object.ajax_url,data,function(response){
+			if(response.success){
+				button.parent().parent().find("img").attr("src",response.image_url);
+				button.parent().parent().find(".hidden_image_url").val(response.image_url);
+			}
+		},"json");
+	});
+	
 });

@@ -226,7 +226,7 @@ function video_player_video($id)
 		if($_POST["show_video_url_1"] != ''){
 			
 		$youtubeviminsert = $_POST["show_video_url_1"];
-		$youtubeinsert = explode("youtube", $youtubeviminsert);
+		$youtubeinsert = explode("youtu", $youtubeviminsert);
 		$vimeoinsert = explode("vimeo", $youtubeviminsert);
 	
 		$table_name = $wpdb->prefix . "huge_it_videos";
@@ -389,7 +389,7 @@ function apply_cat($id){
 			 echo 'insert numerc id';
 		 	return '';
 		 }
-		 if(!(isset($_POST['album_width']) && isset($_POST["album_name"]) ))
+		 if(!(isset($_POST['sl_width']) && isset($_POST["album_name"]) ))
 		 {
 			echo '';
 		 }
@@ -403,6 +403,7 @@ function apply_cat($id){
 	$script_cat = preg_replace('#<script(.*?)>(.*?)</script>#is', '', stripslashes($_POST["content"]));
 	}
 			if(isset($_POST["album_name"])){
+			if($_POST["album_name"] != ''){
 			
 	$wpdb->query($wpdb->prepare("UPDATE ".$wpdb->prefix."huge_it_video_players SET  name = %s  WHERE id = %d ", $_POST["album_name"], $id));
 	$wpdb->query($wpdb->prepare("UPDATE ".$wpdb->prefix."huge_it_video_players SET  album_single = %s  WHERE id = %d ", $_POST["album_single"], $id));
@@ -414,6 +415,7 @@ function apply_cat($id){
 	$wpdb->query($wpdb->prepare("UPDATE ".$wpdb->prefix."huge_it_video_players SET  autoplay = %s  WHERE id = %d ", $_POST["album_autoplay"], $id));
 	//$wpdb->query($wpdb->prepare("UPDATE ".$wpdb->prefix."huge_it_video_players SET  preload = %s  WHERE id = %d ", $_POST["album_preload"], $id));
 	$wpdb->query($wpdb->prepare("UPDATE ".$wpdb->prefix."huge_it_video_players SET  ordering = '1'  WHERE id = %d ", $id));
+			}
 			}
 		
 	$query=$wpdb->prepare("SELECT * FROM ".$wpdb->prefix."huge_it_video_players WHERE id = %d", $id);

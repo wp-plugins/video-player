@@ -3,8 +3,8 @@
 /*
 Plugin Name: Huge IT Video Player
 Plugin URI: http://huge-it.com/video-player/
-Description: Inserting video on a page is a perfect way to supplement website with media content and expand the user’s interest in your site.
-Version: 1.0.4
+Description: Huge-IT Video player is perfect for using for creating various portfolios within various views. 
+Version: 1.0.5
 Author: Huge-IT
 Author: http://huge-it.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
@@ -208,7 +208,6 @@ function all_video_frontend_scripts_and_styles() {
 	wp_enqueue_media();
 	wp_enqueue_style("iconfonts",plugins_url("icon-fonts/css/font-awesome.css", __FILE__), FALSE);
 	wp_enqueue_script("froogaloop",plugins_url("froogaloop.min.js", __FILE__), FALSE);
-	wp_enqueue_script("yt",plugins_url("js/youtube.lib.js", __FILE__), FALSE);
 }
 add_action('wp_enqueue_scripts', 'all_video_frontend_scripts_and_styles');
 
@@ -223,10 +222,12 @@ function huge_it_video_player_options_panel()
 	add_action('admin_print_styles-' . $page_cat, 'huge_it_video_player_admin_script');
     add_action('admin_print_styles-' . $page_option, 'huge_it_video_player_option_admin_script');
 }
+
 function huge_it__video_player_featured_plugins()
 {
 	include_once("admin/huge_it_featured_plugins.php");
 }
+
 
 function huge_it_video_player_Licensing(){
 	?>
@@ -248,7 +249,6 @@ Purchasing a license will add possibility to customize the general options  of t
 </div>
 <?php
 }
-
 
 function video_player_sliders_huge_it_slider()
 {
@@ -351,6 +351,7 @@ function huge_it_video_player_admin_script()
 	wp_enqueue_style("jquery_ui", plugins_url("style/jquery-ui.css", __FILE__), FALSE);
 	wp_enqueue_style("admin_css", plugins_url("style/admin.style.css", __FILE__), FALSE);
 	wp_enqueue_script("admin_js", plugins_url("js/admin.js", __FILE__), FALSE);
+	wp_localize_script('admin_js', 'ajax_object',array( 'ajax_url' => admin_url( 'admin-ajax.php' )));
 }
 
 
@@ -358,10 +359,11 @@ function huge_it_video_player_option_admin_script()
 {
 	wp_enqueue_script("jquery_old", "http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js", FALSE);
 	wp_enqueue_script("simple_slider_js",  plugins_url("js/simple-slider.js", __FILE__), FALSE);
-	wp_enqueue_style("simple_slider_css", plugins_url("style/simple-slider_sl.css", __FILE__), FALSE);
+	wp_enqueue_style("simple_slider_css", plugins_url("style/simple-slider.css", __FILE__), FALSE);
 	wp_enqueue_style("admin_css", plugins_url("style/admin.style.css", __FILE__), FALSE);
 	wp_enqueue_script("admin_js", plugins_url("js/admin.js", __FILE__), FALSE);
 	wp_enqueue_script('param_block2', plugins_url("elements/jscolor/jscolor.js", __FILE__));
+	wp_localize_script('admin_js', 'ajax_object',array( 'ajax_url' => admin_url( 'admin-ajax.php' )));
 }
 
 
@@ -442,6 +444,66 @@ function video_players_huge_it_video_player()
 
 }
 
+add_action("wp_ajax_video_player_ajax","wp_ajax_video_player_callback");
+
+function wp_ajax_video_player_callback(){
+	function get_youtube_thumb_id_from_url($url){						
+		if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
+			return $match[1];
+		}
+	}
+	
+	if(isset($_POST['task'])){
+		if($_POST['task']=="get_video_meta_from_url"){
+			$video_url=$_POST['url'];
+			$youtube_exp = explode("youtu", $video_url);
+			$vimeo_exp = explode("vimeo", $video_url);
+			$video_title="";
+			$video_image="";
+			if(isset($youtube_exp[1])){
+				$video_id=get_youtube_thumb_id_from_url($video_url);
+				$video_title="";
+				$video_image='http://img.youtube.com/vi/'.$video_id.'/mqdefault.jpg';
+				$type="youtube";
+			}else{
+				if(isset($vimeo_exp[1])){
+					$vidid = explode( "/", $video_url);
+					$vidid=end($vidid);
+					$hash=file_get_contents("http://vimeo.com/api/v2/video/".$vidid.".php");
+					$hash = unserialize($hash);
+					$video_image=$hash[0]['thumbnail_large'];
+					$video_title=$hash[0]['title'];
+					$type="vimeo";
+				}
+			}
+			
+			if($video_title=="" && $video_image==""){
+				echo json_encode(array("fail"=>1));
+				die();
+			}else{
+				echo json_encode(array("success"=>1,"image_url"=>$video_image,"title"=>$video_title,"type"=>$type));
+				die();
+			}
+		}
+		if($_POST['task']=="get_video_thumb_from_id"){
+			$video_id=$_POST['video_id'];
+			$video_image="";
+			if($_POST['type']=="youtube"){
+				$video_image='http://img.youtube.com/vi/'.$video_id.'/mqdefault.jpg';
+			}
+			if($_POST['type']=="vimeo"){
+				$hash=file_get_contents("http://vimeo.com/api/v2/video/".$video_id.".php");
+				$hash = unserialize($hash);
+				$video_image=$hash[0]['thumbnail_large'];
+			}
+			
+			if(isset($video_image)){
+				echo json_encode(array("success"=>1,"image_url"=>$video_image));
+				die();
+			}
+		}
+	}
+}
 
 function Options_video_player_styles()
 {
@@ -609,40 +671,43 @@ CREATE TABLE IF NOT EXISTS `" . $wpdb->prefix . "huge_it_video_players` (
 INSERT INTO `$table_name` (`name`, `title`,`description`, `value`) VALUES
 
 ('video_pl_position', 'Position', 'Position', 'center'),
-('video_pl_yt_autohide', 'Autohide Controls', 'Autohide Controls', '1'),
+('video_pl_yt_autohide', 'Autohide Youtube Controls', ''Autohide Youtube Controls', '1'),
 ('video_pl_yt_fullscreen', 'Allow Full Screen', 'Allow Full Screen', '1'),
 ('video_pl_yt_showinfo', 'Show Video Information', 'Show Video Information', '1'),
 ('video_pl_vimeo_portrait', 'Show User Portrait', 'Show User Portrait', '1'),
 ('video_pl_playlist_head_size', 'Playlist Title Size', 'Playlist Title Size', '15'),
 ('video_pl_curtime_color', 'Current Time Text Color', 'Current Time Text Color', 'FFFFFF'),
-('video_pl_durtime_color', 'Duration Time Text Color', 'Duration Time Text Color', 'CCCCCC'),
+('video_pl_durtime_color', 'Duration Time Text Color', 'Duration Time Text Color', 'DDDDDD'),
 ('video_pl_playlist_scroll_track', 'Playlist Scrollbar Track Color', 'Playlist Scrollbar Track Color', '444444'),
 ('video_pl_playlist_scroll_thumb', 'Playlist Scrollbar Thumb Color', 'Playlist Scrollbar Thumb Color', 'CCCCCC'),
 ('video_pl_playlist_scroll_thumb_hover', 'Playlist Scrollbar Thumb Hover Color', 'Playlist Scrollbar Thumb Hover Color', 'AAAAAA'),
 ('video_pl_playlist_head_color', 'Playlist Heading Color', 'Playlist Heading Color', 'FFFFFF'),
-('video_pl_playlist_active_color', 'Playlist Active Color', 'Playlist Active Color', '3a3a3a'),
+('video_pl_playlist_active_color', 'Playlist Active Color', 'Playlist Active Color', 'FFFFFF'),
 ('video_pl_playlist_hover_color', 'Playlist Hover Color', 'Playlist Hover Color', '525252'),
-('video_pl_playlist_hover_text_color', 'Playlist Hover Text Color', 'Playlist Hover Text Color', 'cacaca'),
-('video_pl_playlist_active_text_color', 'Playlist Active Text Color', 'Playlist Active Text Color', 'cacaca'),
+('video_pl_playlist_hover_text_color', 'Playlist Hover Text Color', 'Playlist Hover Text Color', 'FFFFFF'),
+('video_pl_playlist_active_text_color', 'Playlist Active Text Color', 'Playlist Active Text Color', 'FFFFFF'),
 ('video_pl_playlist_text_color', 'Playlist Text Color', 'Playlist Text Color', 'FFFFFF'),
 ('video_pl_border_size', 'Border Size', 'Border Size', '0'),
 ('video_pl_margin_bottom', 'margin bottom', 'margin bottom', '5'),
 ('video_pl_margin_top', 'Margin top', 'Margin top', '5'),
 ('video_pl_margin_right', 'Margin right', 'Margin right', '5'),
 ('video_pl_margin_left', 'Margin left', 'Margin left', '5'),
-('video_pl_timeline_color', 'Time line color', 'Time line color', 'b91f1f'),
-('video_pl_timeline_buffering_color', 'Time line color', 'Time line color', '777'),
-('video_pl_timeline_background', 'Timeline background color', 'Timeline background color', '444'),
-('video_pl_buttons_color', 'Timeline background color', 'Timeline background color', '8e8e8e'),
-('video_pl_buttons_hover_color', ' background color', ' background color', '777'),
-('video_pl_controls_panel_color', 'Volume time color', 'Volume time color', '333'),
-('video_pl_volume_background_color', 'Volume time color', 'Volume time color', '777'),
+('video_pl_timeline_color', 'Time line color', 'Time line color', 'F12B24'),
+('video_pl_timeline_buffering_color', 'Buffer color', 'Buffer color', 'FFFFFF'),
+('video_pl_timeline_buffering_opacity', 'Buffer opacity', 'Buffer opacity', '40'),
+('video_pl_timeline_background', 'Timeline background color', 'Timeline background color', 'FFFFFF'),
+('video_pl_timeline_background_opacity', 'Timeline background opacity', 'Timeline background opacity', '20'),
+('video_pl_buttons_color', 'Buttons color', 'Buttons color', 'FFFFFF'),
+('video_pl_buttons_hover_color', ' Buttons hover color', ' Buttons hover color', 'FFFFFF'),
+('video_pl_controls_panel_color', 'Controls color', 'Controls color', '333'),
+('video_pl_controls_panel_opacity', 'Controls', 'Controls', '0'),
+('video_pl_volume_background_color', 'Volume time color', 'Volume time color', 'FFFFFF'),
 ('video_pl_background_color', 'Background color', 'Background color', 'EEEEEE'),
 ('video_pl_playlist_color', 'Background color', 'Background color', '000000'),
-('video_pl_timeline_slider_color', 'Slider color', 'Slider color', 'ddd'),
+('video_pl_timeline_slider_color', 'Slider color', 'Slider color', 'f12b24'),
 ('video_pl_title_font_size', 'Title font size', 'Title font size', '13'),
-('video_pl_title_font_color', 'Title Font color', 'Title Font color', '737373'),
-('video_pl_title_background_color', 'Title background color', 'Title background color', 'CCCCCC'),
+('video_pl_title_font_color', 'Title Font color', 'Title Font color', 'FFFFFF'),
+('video_pl_title_background_color', 'Title background color', 'Title background color', '000000'),
 ('video_pl_title_show', 'show title', 'show title', 'on'),
 ('video_pl_border_color', 'Border color', 'Border color', '009BE3'),
 ('video_pl_yt_color', 'Youtube Color', 'Youtube Color', 'red'),
@@ -706,6 +771,17 @@ INSERT INTO `$table_name` (`id`, `name`, `layout`, `width`, `album_single`, `ord
       $wpdb->query($sql_3);
     }
 	
+	if(!$wpdb->get_row("select * from ".$wpdb->prefix."huge_it_video_params WHERE name='video_pl_timeline_background_opacity'")){
+		$wpdb->query("INSERT INTO `".$wpdb->prefix."huge_it_video_params` (`name`, `title`,`description`, `value`) VALUES ('video_pl_timeline_background_opacity', 'Timeline background opacity', 'Timeline background opacity', '20')");
+	}
+	
+	if(!$wpdb->get_row("select * from ".$wpdb->prefix."huge_it_video_params WHERE name='video_pl_timeline_buffering_opacity'")){
+		$wpdb->query("INSERT INTO `".$wpdb->prefix."huge_it_video_params` (`name`, `title`,`description`, `value`) VALUES ('video_pl_timeline_buffering_opacity', 'Buffer color', 'Buffer color', '40')");
+	}
+	
+	if(!$wpdb->get_row("select * from ".$wpdb->prefix."huge_it_video_params WHERE name='video_pl_controls_panel_opacity'")){
+		$wpdb->query("INSERT INTO `".$wpdb->prefix."huge_it_video_params` (`name`, `title`,`description`, `value`) VALUES ('video_pl_controls_panel_opacity', 'Controls', 'Controls', '0')");
+	}
 }
 
 register_activation_hook(__FILE__, 'huge_it_video_player_activate');
