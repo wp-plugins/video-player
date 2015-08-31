@@ -1482,7 +1482,7 @@ function front_end_video_player($videos, $paramssld, $video_player){
 									<div class="thumbnail_play"><i class="hugeicons hugeicons-play-circle-o"></i></div>
 								</div>
 								<div class="huge_it_video_player_top">
-									<div class="video_title">Big Buck Bunny</div>
+									<div class="video_title"><?=$video->name; ?></div>
 								</div>
 								<div class="huge_it_video_player_bottom">
 									<div class="huge_it_video_player_duration_slide">
