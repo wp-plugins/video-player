@@ -4,7 +4,7 @@
 Plugin Name: Huge IT Video Player
 Plugin URI: http://huge-it.com/video-player/
 Description: Huge-IT Video player is perfect for using for creating various portfolios within various views. 
-Version: 1.0.6
+Version: 1.0.7
 Author: Huge-IT
 Author: http://huge-it.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
@@ -671,7 +671,7 @@ CREATE TABLE IF NOT EXISTS `" . $wpdb->prefix . "huge_it_video_players` (
 INSERT INTO `$table_name` (`name`, `title`,`description`, `value`) VALUES
 
 ('video_pl_position', 'Position', 'Position', 'center'),
-('video_pl_yt_autohide', 'Autohide Youtube Controls', ''Autohide Youtube Controls', '1'),
+('video_pl_yt_autohide', 'Autohide Youtube Controls', 'Autohide Youtube Controls', '1'),
 ('video_pl_yt_fullscreen', 'Allow Full Screen', 'Allow Full Screen', '1'),
 ('video_pl_yt_showinfo', 'Show Video Information', 'Show Video Information', '1'),
 ('video_pl_vimeo_portrait', 'Show User Portrait', 'Show User Portrait', '1'),
