@@ -1,7 +1,7 @@
 === Video Player ===
 Contributors: Huge-IT
 Donate link: http://huge-it.com/video-player/
-Tags: video, video player, youtube Video Player, definition, HD, player, html5, html5 player, youtube videos, HTML5 video player, playlists, video embed, Video Player plugin, MP4, myvideo, playlist, video blog, html5 video, HTML5 video gallery, youtube widget, m4v, embed video, embed youtube, video playlist, video plugin, video sidebar widget, video widget, videos, youtube player, youtube playlist, youtube plugin, video HTML5, video, mp3 iphone, ipod, iPad, flash player, embed, post, posts, widget,
+Tags: video, video player, youtube Video Player, definition, HD, player, html5, html5 player, youtube videos, HTML5 video player, playlists, video embed, Video Player plugin, MP4, myvideo, playlist, video blog, html5 video, HTML5 video gallery, youtube widget, m4v, embed video, embed youtube, video playlist, video plugin, video sidebar widget, video widget, videos, youtube player, youtube playlist, youtube plugin, video HTML5, video, mp3 iphone, ipod, iPad, flash player, embed, post, posts, widget, best player, video ekleme, vimeo,
 Requires at least: 3.0.1
 Tested up to: 4.3.1
 Stable tag: 1.0.7
@@ -51,19 +51,19 @@ Now you can set your Video Player options, images and use our Video Player.
 == Changelog ==
 
 = 1.0.7 =
-*  Bug fixed.
+*  Bug fixed in video player.
 
 = 1.0.6 =
-*  Bug fixed.
+*  Bug fixed in video player.
 
 = 1.0.3 =
 *  Video Player Bug fixed.
 
 = 1.0.2 =
-*  Bug fixed.
+*  Bug fixed in video player.
 
 = 1.0.1 =
-*  Bug fixed.
+*  Bug fixed in video player.
 
 = 1.0.0 =
 *  Adding a Video Player.
@@ -173,20 +173,20 @@ Playlist Scrollbar Thumb Hover Color. Pick up a color for scroll bar moving thum
 
 **Youtube Player Options - Video Player**
 
-Color. Choose color for youtube play track, white or red	
+Color. Choose color for youtube play track, white or red - Video Player
 				
-Theme. Decide a theme for youtube player, dark or light		
+Theme. Decide a theme for youtube player, dark or light	- Video Player
 		
-Annotations. When “off’ will hide annotation popup on video while watching
+Annotations. When “off’ will hide annotation popup on video while watching - Video Player
   	
-Autohide. If “on” the player will show display and video playback controls during video whole duration	
+Autohide. If “on” the player will show display and video playback controls during video whole duration - Video Player
 								
-Full Screen. This hides fullscreen ability	
+Full Screen. This hides fullscreen ability	 - Video Player
 					
-Show Info. When “off” title of the video, like/dislike, share buttons all will be hide	
+Show Info. When “off” title of the video, like/dislike, share buttons all will be hide - Video Player
 					
 **Vimeo Player Options - Video Player**
 
-Color. Choose color for play button and duration line on Vimeo player
+Color. Choose color for play button and duration line on Vimeo player - Video Player
 
-Portrait.	 When “off” will hide video information 
+Portrait.	 When “off” will hide video information - Video Player
