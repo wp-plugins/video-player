@@ -1830,7 +1830,7 @@ jQuery(document).ready(function(){
 						enablejsapi      : 1,
 						playerVars:{
 							'autohide':			<?php echo $paramssld['video_pl_yt_autohide']; ?>,
-							'autoplay':			<?php if($j==0){ echo $video_player[0]->autoplay; }else{ echo 0; } ?>,
+							'autoplay':			0,
 							'controls': 		1,
 							'fs':				0,
 							'disablekb':		0,

@@ -44,9 +44,9 @@ jQuery(document).ready(function () {
 			</a>
 		</div>
 		<div style="float: left;">
-			<div>&nbsp;&nbsp;&nbsp;<a href="http://huge-it.com/wordpress-plugins-video-player-user-manual" target="_blank">User Manual</a></div>
-			<div>This section allows you to configure the Video Player options.&nbsp;&nbsp; <a href="http://huge-it.com/wordpress-plugins-video-player-user-manual" target="_blank">More...</a></div>
-			<div>This options are disabled in free version. Get full version to customize them.&nbsp;&nbsp; <a href="http://huge-it.com/wordpress-plugins-video-player-user-manual" target="_blank">Get full Version</a></div>
+			<div>&nbsp;&nbsp;&nbsp;<a href="http://huge-it.com/wordpress-video-player-user-manual/" target="_blank">User Manual</a></div>
+			<div>This section allows you to configure the Video Player options.&nbsp;&nbsp; <a href="http://huge-it.com/wordpress-video-player-user-manual/" target="_blank">More...</a></div>
+			<div>This options are disabled in free version. Get full version to customize them.&nbsp;&nbsp; <a href="http://huge-it.com/wordpress-video-player-user-manual/" target="_blank">Get full Version</a></div>
 		</div>	</div>
 
 		<div style="clear:both;"></div>

@@ -4,7 +4,7 @@ Donate link: http://huge-it.com/video-player/
 Tags: video, video player, youtube Video Player, definition, HD, player, html5, html5 player, youtube videos, HTML5 video player, playlists, video embed, Video Player plugin, MP4, myvideo, playlist, video blog, html5 video, HTML5 video gallery, youtube widget, m4v, embed video, embed youtube, video playlist, video plugin, video sidebar widget, video widget, videos, youtube player, youtube playlist, youtube plugin, video HTML5, video, mp3 iphone, ipod, iPad, flash player, embed, post, posts, widget, best player, video ekleme, vimeo,
 Requires at least: 3.0.1
 Tested up to: 4.3.1
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,8 +16,8 @@ Inserting video player on a page is a perfect way to supplement website with med
 
 * [Wordpress Video Player](http://huge-it.com/video-player/)
 * [Demo Video Player](http://huge-it.com/wordpress-plugins-video-player-demo/)
-* [Demo Video Player Admin](http://huge-it.com/wordpress-plugins-video-player-demo-admin/)
-* [User Video Player Manual](http://huge-it.com/wordpress-plugins-video-player-user-manual/)
+* [FAQ Video Player](http://huge-it.com/wordpress-video-player-faq/)
+* [User Video Player Manual](http://huge-it.com/wordpress-video-player-user-manual/)
 
 Inserting video on a page is a perfect way to supplement website with media content and expand the user’s interest in your site. 
 Huge-IT Video Player is extremely necessary video tool for your sites, which provides a wide range of different file formats. One of them is uploading your own video file, as well as video from some custom url, and also famous video sources like YouTube and Vimeo.In Video Player Simply insert the link, and add thumbnail image. Due to our Video Player you can quickly and easily view your favorite videos. 
@@ -49,6 +49,9 @@ Now you can set your Video Player options, images and use our Video Player.
 == Screenshots ==
 
 == Changelog ==
+
+= 1.0.8 =
+*  Bug fixed in video player.
 
 = 1.0.7 =
 *  Bug fixed in video player.
