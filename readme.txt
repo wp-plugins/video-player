@@ -48,6 +48,8 @@ Now you can set your Video Player options, images and use our Video Player.
 
 == Screenshots ==
 
+1.  WordPress Video Player
+
 == Changelog ==
 
 = 1.0.8 =
