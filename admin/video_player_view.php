@@ -39,8 +39,8 @@ function html_showvideo_players( $rows,  $pageNav,$sort,$cat_row){
 	</script>
 
 <div class="wrap">
-<?php $path_site2 = plugins_url("../images", __FILE__); ?>
-    <style>
+	<?php $path_site2 = plugins_url("../images", __FILE__); ?>
+	<style>
 		.free_version_banner {
 			position:relative;
 			display:block;
@@ -299,19 +299,137 @@ jQuery(function() {
 <!-- GENERAL PAGE, ADD IMAGES PAGE -->
 
 <div class="wrap">
-<?php $path_site2 = plugins_url("../images", __FILE__); ?>
-	<div class="slider-options-head">
-		<div style="float: left;">
-			<div><a href="http://huge-it.com/wordpress-video-player-user-manual/" target="_blank">User Manual</a></div>
-			<div>This section allows you to configure the Portfolio/Gallery options. <a href="http://huge-it.com/wordpress-video-player-user-manual/" target="_blank">More...</a></div>
-		</div>
-		<div style="float: right;">
-			<a class="header-logo-text" href="http://huge-it.com/video-player/" target="_blank">
-				<div><img width="250px" src="<?php echo $path_site2; ?>/huge-it1.png" /></div>
-				<div>Get the full version</div>
-			</a>
-		</div>
-		<div class="clear"></div>
+	<?php $path_site2 = plugins_url("../images", __FILE__); ?>
+    <style>
+		.free_version_banner {
+			position:relative;
+			display:block;
+			background-image:url(<?php echo $path_site2; ?>/wp_banner_bg.jpg);
+			background-position:top left;
+			backround-repeat:repeat;
+			overflow:hidden;
+		}
+		
+		.free_version_banner .manual_icon {
+			position:absolute;
+			display:block;
+			top:15px;
+			left:15px;
+		}
+		
+		.free_version_banner .usermanual_text {
+                        font-weight: bold !important;
+			display:block;
+			float:left;
+			width:270px;
+			margin-left:75px;
+			font-family:'Open Sans',sans-serif;
+			font-size:12px;
+			font-weight:300;
+			font-style:italic;
+			color:#ffffff;
+			line-height:10px;
+                        margin-top: 0;
+                        padding-top: 15px;
+		}
+		
+		.free_version_banner .usermanual_text a,
+		.free_version_banner .usermanual_text a:link,
+		.free_version_banner .usermanual_text a:visited {
+			display:inline-block;
+			font-family:'Open Sans',sans-serif;
+			font-size:17px;
+			font-weight:600;
+			font-style:italic;
+			color:#ffffff;
+			line-height:30.5px;
+			text-decoration:underline;
+		}
+		
+		.free_version_banner .usermanual_text a:hover,
+		.free_version_banner .usermanual_text a:focus,
+		.free_version_banner .usermanual_text a:active {
+			text-decoration:underline;
+		}
+		
+		.free_version_banner .get_full_version,
+		.free_version_banner .get_full_version:link,
+		.free_version_banner .get_full_version:visited {
+                        padding-left: 60px;
+                        padding-right: 4px;
+			display: inline-block;
+                        position: absolute;
+                        top: 15px;
+                        right: calc(50% - 167px);
+                        height: 38px;
+                        width: 268px;
+                        border: 1px solid rgba(255,255,255,.6);
+                        font-family: 'Open Sans',sans-serif;
+                        font-size: 23px;
+                        color: #ffffff;
+                        line-height: 43px;
+                        text-decoration: none;
+                        border-radius: 2px;
+		}
+		
+		.free_version_banner .get_full_version:hover {
+			background:#ffffff;
+			color:#bf1e2e;
+			text-decoration:none;
+			outline:none;
+		}
+		
+		.free_version_banner .get_full_version:focus,
+		.free_version_banner .get_full_version:active {
+			
+		}
+		
+		.free_version_banner .get_full_version:before {
+			content:'';
+			display:block;
+			position:absolute;
+			width:33px;
+			height:23px;
+			left:25px;
+			top:9px;
+			background-image:url(<?php echo $path_site2; ?>/wp_shop.png);
+			background-position:0px 0px;
+			background-repeat;
+		}
+		
+		.free_version_banner .get_full_version:hover:before {
+			background-position:0px -27px;
+		}
+		
+		.free_version_banner .huge_it_logo {
+			float:right;
+			margin:15px 15px;
+		}
+		
+		.free_version_banner .description_text {
+                        padding:0 0 13px 0;
+			position:relative;
+			display:block;
+			width:100%;
+			text-align:center;
+			float:left;
+			font-family:'Open Sans',sans-serif;
+			color:#fffefe;
+			line-height:inherit;
+		}
+		.free_version_banner .description_text p{
+				margin:0;
+				padding:0;
+				font-size: 14px;
+		}
+	</style>
+	<div class="free_version_banner">
+		<img class="manual_icon" src="<?php echo $path_site2; ?>/icon-user-manual.png" alt="user manual" />
+		<p class="usermanual_text">If you have any difficulties in using the options, Follow the link to <a href="http://huge-it.com/wordpress-video-player-user-manual/" target="_blank">User Manual</a></p>
+		<a class="get_full_version" href="http://huge-it.com/video-player/" target="_blank">GET THE FULL VERSION</a>
+                <a href="http://huge-it.com" target="_blank"><img class="huge_it_logo" src="<?php echo $path_site2; ?>/Huge-It-logo.png"/></a>
+                <div style="clear: both;"></div>
+		<div  class="description_text"><p>This is the free version of the plugin. In order to use options from this section, get the full version. We appreciate every customer.</p></div>
 	</div>
 <form action="admin.php?page=video_players_huge_it_video_player&id=<?php echo $row->id; ?>" method="post" name="adminForm" id="adminForm">
 
@@ -445,7 +563,6 @@ jQuery(document).ready(function($){
 												return _orig_send_attachment.apply( this, [props, attachment] );
 											  };
 											}
-
 											wp.media.editor.open(button);
 											return false;
 										  });
@@ -479,13 +596,14 @@ jQuery(document).ready(function($){
 								</div>
 									</div>
 							</div>
-							<div class="image-options">
+							<div data-video-type="video" class="image-options">
 								<div class="description-block">
 									<label for="titleimage<?php echo $rowimages->id; ?>">Title:</label>
 									<input  class="text_area" type="text" id="titleimage<?php echo $rowimages->id; ?>" name="titleimage<?php echo $rowimages->id; ?>" id="titleimage<?php echo $rowimages->id; ?>"  value="<?php echo $rowimages->name; ?>">
 								</div>
 								<div class="description-block">
-									<input style="padding-right:20px;" type="hidden" name="for_video_1<?php echo $rowimages->id; ?>" id="for_video_1<?php echo $rowimages->id; ?>" value="<?php echo $rowimages->video_url_1; ?>" />
+									<label for="for_video_1<?php echo $rowimages->id; ?>">Url:</label>
+									<input style="padding-right:20px;" type="text" name="for_video_1<?php echo $rowimages->id; ?>" id="for_video_1<?php echo $rowimages->id; ?>" value="<?php echo $rowimages->video_url_1; ?>" />
 									<div class="huge-it-editnewuploader uploader button<?php echo $rowimages->id; ?>">
 										<input type="button" class="button<?php echo $rowimages->id; ?> wp-media-buttons-icon editimageicon" name="for_video_1_button<?php echo $rowimages->id; ?>" id="for_video_1_button<?php echo $rowimages->id; ?>" value="" />
 									</div>
@@ -494,7 +612,6 @@ jQuery(document).ready(function($){
 									<a onclick="deleteproject<?php echo $rowimages->id; ?>(); submitbutton('apply');" id="remove_image<?php echo $rowimages->id; ?>" class="button remove-image">X</a>
 								</div>
 							</div>
-						
 						<div class="clear"></div>
 						</li>
 						<?php break;
@@ -506,13 +623,13 @@ jQuery(document).ready(function($){
 								<?php $path_site = plugins_url("../images", __FILE__); ?>
 								<?php if($rowimages->image_url == ''){ ?>
 								<img src="<?php echo $path_site; ?>/noimage.jpg" />
-								<?php } else { ?>
+								<?php }else{ ?>
 								<img src="<?php echo $rowimages->image_url; ?>" />
 								<?php } ?>
 								<div>
 										<script>
 										jQuery(document).ready(function($){
-										var _custom_media = true,
+											var _custom_media = true,
 											  _orig_send_attachment = wp.media.editor.send.attachment;
 
 											jQuery('.huge-it-editnewuploader .button<?php echo $rowimages->id; ?>').click(function(e) {
@@ -545,10 +662,10 @@ jQuery(document).ready(function($){
 													jQuery(".separator").next().css("display","none");
 													jQuery('.attachment-filters').val('image').trigger('change');
 													jQuery(".attachment-filters").css("display","none");
-
 												});
 											});
-
+											
+											
 										});
 										function deleteproject<?php echo $rowimages->id; ?>() {
 										   jQuery('#adminForm').attr('action', 'admin.php?page=video_players_huge_it_video_player&task=edit_cat&id=<?php echo $row->id; ?>&removeslide=<?php echo $rowimages->id; ?>');
@@ -560,22 +677,21 @@ jQuery(document).ready(function($){
 										<span class="edit_image_info">Set Custom Thumbnail</span>
 										<input type="button" class="editimgbutton button<?php echo $rowimages->id; ?> wp-media-buttons-icon" name="_unique_name_button<?php echo $rowimages->id; ?>" id="_unique_name_button<?php echo $rowimages->id; ?>" value="" />
 									</div>
-
-								
 								</div>
 								<div class="default_thumbnail">
 									<div class="button set_default_thumbnail" data-video-type="youtube" data-video-id="<?=get_youtube_thumb_id_from_url($rowimages->video_url_1); ?>">Set Default Thumbnail</div>
 								</div>
 							</div>
 							
-							<div class="image-options">
-								
+							<div data-video-type="youtube" class="image-options">
 								<div class="description-block">
 									<label for="titleimage<?php echo $rowimages->id; ?>">Title:</label>
 									<input  class="text_area" type="text" id="titleimage<?php echo $rowimages->id; ?>" name="titleimage<?php echo $rowimages->id; ?>" id="titleimage<?php echo $rowimages->id; ?>"  value="<?php echo $rowimages->name; ?>">
 								</div>
 								<div class="description-block">
-									<input type="hidden" name="for_video_1<?php echo $rowimages->id; ?>" id="for_video_1<?php echo $rowimages->id; ?>" value="<?php echo $rowimages->video_url_1; ?>" />
+									<label for="for_video_1<?php echo $rowimages->id; ?>">Url:</label>
+									<input class="youtube_link video_link_change" type="text" name="for_video_1<?php echo $rowimages->id; ?>" id="for_video_1<?php echo $rowimages->id; ?>" value="<?php echo $rowimages->video_url_1; ?>" />
+									<div class="button update_video_link">Update</div>
 								</div>
 								<div class="link-block">
 									<input type="hidden" name="for_video_2<?php echo $rowimages->id; ?>" id="for_video_2<?php echo $rowimages->id; ?>" value="<?php echo $rowimages->video_url_2; ?>" />
@@ -676,14 +792,15 @@ jQuery(document).ready(function($){
 									<div class="button set_default_thumbnail" data-video-type="vimeo" data-video-id="<?=$vidid; ?>">Set Default Thumbnail</div>
 								</div>
 							</div>
-							<div class="image-options">
-								
+							<div data-video-type="vimeo" class="image-options">
 								<div class="description-block">
 									<label for="titleimage<?php echo $rowimages->id; ?>">Title:</label>
 									<input  class="text_area" type="text" id="titleimage<?php echo $rowimages->id; ?>" name="titleimage<?php echo $rowimages->id; ?>" id="titleimage<?php echo $rowimages->id; ?>"  value="<?php echo $rowimages->name; ?>">
 								</div>
 								<div class="description-block">
-									<input type="hidden" name="for_video_1<?php echo $rowimages->id; ?>" id="for_video_1<?php echo $rowimages->id; ?>" value="<?php echo $rowimages->video_url_1; ?>" />
+									<label for="for_video_1<?php echo $rowimages->id; ?>">Url:</label>
+									<input class="vimeo_link video_link_change" type="text" name="for_video_1<?php echo $rowimages->id; ?>" id="for_video_1<?php echo $rowimages->id; ?>" value="<?php echo $rowimages->video_url_1; ?>" />
+									<div class="button update_video_link">Update</div>
 								</div>
 								<div class="link-block">
 									<input type="hidden" name="for_video_2<?php echo $rowimages->id; ?>" id="for_video_2<?php echo $rowimages->id; ?>" value="<?php echo $rowimages->video_url_2; ?>" />

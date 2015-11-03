@@ -4,7 +4,7 @@
 Plugin Name: Huge IT Video Player
 Plugin URI: http://huge-it.com/video-player/
 Description: Huge-IT Video player is perfect for using for creating various portfolios within various views. 
-Version: 1.0.9
+Version: 1.1.0
 Author: Huge-IT
 Author: http://huge-it.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
@@ -103,58 +103,6 @@ function huge_it_video_player_images_list_shotrcode($atts)
 
 }
 
-
-/////////////// Filter video_player
-
-
-function video_player_after_search_results($query)
-{
-    global $wpdb;
-    if (isset($_REQUEST['s']) && $_REQUEST['s']) {
-        $serch_word = htmlspecialchars(($_REQUEST['s']));
-        $query = str_replace($wpdb->prefix . "posts.post_content", gen_string_video_player_search($serch_word, $wpdb->prefix . 'posts.post_content') . " " . $wpdb->prefix . "posts.post_content", $query);
-    }
-    return $query;
-
-}
-
-add_filter('posts_request', 'video_player_after_search_results');
-
-
-function gen_string_video_player_search($serch_word, $wordpress_query_post)
-{
-    $string_search = '';
-
-    global $wpdb;
-    if ($serch_word) {
-        $rows_video_player = $wpdb->get_results($wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "huge_it_video_players WHERE (description LIKE %s) OR (name LIKE %s)", '%' . $serch_word . '%', "%" . $serch_word . "%"));
-
-        $count_cat_rows = count($rows_video_player);
-
-        for ($i = 0; $i < $count_cat_rows; $i++) {
-            $string_search .= $wordpress_query_post . ' LIKE \'%[huge_it_video_player id="' . $rows_video_player[$i]->id . '" details="1" %\' OR ' . $wordpress_query_post . ' LIKE \'%[huge_it_video_player id="' . $rows_video_player[$i]->id . '" details="1"%\' OR ';
-        }
-		
-        $rows_video_player = $wpdb->get_results($wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "huge_it_video_players WHERE (name LIKE %s)","'%" . $serch_word . "%'"));
-        $count_cat_rows = count($rows_video_player);
-        for ($i = 0; $i < $count_cat_rows; $i++) {
-            $string_search .= $wordpress_query_post . ' LIKE \'%[huge_it_video_player id="' . $rows_video_player[$i]->id . '" details="0"%\' OR ' . $wordpress_query_post . ' LIKE \'%[huge_it_video_player id="' . $rows_video_player[$i]->id . '" details="0"%\' OR ';
-        }
-
-        $rows_single = $wpdb->get_results($wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "huge_it_videos WHERE name LIKE %s","'%" . $serch_word . "%'"));
-
-        $count_sing_rows = count($rows_single);
-        if ($count_sing_rows) {
-            for ($i = 0; $i < $count_sing_rows; $i++) {
-                $string_search .= $wordpress_query_post . ' LIKE \'%[huge_it_video_player_Product id="' . $rows_single[$i]->id . '"]%\' OR ';
-            }
-
-        }
-    }
-    return $string_search;
-}
-
-
 ///////////////////// end filter
 
 
@@ -222,33 +170,28 @@ function huge_it_video_player_options_panel()
 	add_action('admin_print_styles-' . $page_cat, 'huge_it_video_player_admin_script');
     add_action('admin_print_styles-' . $page_option, 'huge_it_video_player_option_admin_script');
 }
-
 function huge_it__video_player_featured_plugins()
 {
 	include_once("admin/huge_it_featured_plugins.php");
 }
 
-
 function huge_it_video_player_Licensing(){
 	?>
     <div style="width:95%">
-    <p>
-	This plugin is the non-commercial version of the Huge IT Video Player. If you want to customize to the styles and colors of your website,than you need to buy a license.
-Purchasing a license will add possibility to customize the general options  of the Huge IT Video Player. 
-
- </p>
-<br /><br />
-<a href="http://huge-it.com/video-player" class="button-primary" target="_blank">Purchase a License</a>
-<br /><br /><br />
-<p>After the purchasing the commercial version follow this steps:</p>
-<ol>
-	<li>Deactivate Huge IT Video Player</li>
-	<li>Delete Huge IT Video Player</li>
-	<li>Install the downloaded commercial version of the plugin</li>
-</ol>
-</div>
+    <p>This plugin is the non-commercial version of the Huge IT Video Player. If you want to customize to the styles and colors of your website,than you need to buy a license.Purchasing a license will add possibility to customize the general options  of the Huge IT Video Player.</p>
+	<br /><br />
+	<a href="http://huge-it.com/video-player" class="button-primary" target="_blank">Purchase a License</a>
+	<br /><br /><br />
+	<p>After the purchasing the commercial version follow this steps:</p>
+	<ol>
+		<li>Deactivate Huge IT Video Player</li>
+		<li>Delete Huge IT Video Player</li>
+		<li>Install the downloaded commercial version of the plugin</li>
+	</ol>
+	</div>
 <?php
 }
+
 
 function video_player_sliders_huge_it_slider()
 {
@@ -344,8 +287,7 @@ function video_player_Options_slider_styles()
 
 //////////////////////////Huge it Slider ///////////////////////////////////////////
 
-function huge_it_video_player_admin_script()
-{
+function huge_it_video_player_admin_script(){
 	wp_enqueue_media();
 	wp_enqueue_style("jquery_ui", "http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css", FALSE);
 	wp_enqueue_style("jquery_ui", plugins_url("style/jquery-ui.css", __FILE__), FALSE);
@@ -449,7 +391,12 @@ add_action("wp_ajax_video_player_ajax","wp_ajax_video_player_callback");
 function wp_ajax_video_player_callback(){
 	function get_youtube_thumb_id_from_url($url){						
 		if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
-			return $match[1];
+			if(!empty($match[1])){
+				return $match[1];
+			}else{
+				return false;
+			}
+			
 		}
 	}
 	
@@ -499,6 +446,41 @@ function wp_ajax_video_player_callback(){
 			
 			if(isset($video_image)){
 				echo json_encode(array("success"=>1,"image_url"=>$video_image));
+				die();
+			}
+		}
+		
+		if($_POST['task']=="change_video_link"){
+			if(isset($_POST['type']) && !empty($_POST['type'])){
+				$type=$_POST['type'];
+			}
+			if(isset($_POST['link']) && !empty($_POST['link'])){
+				$link=$_POST['link'];
+			}
+			
+			if($type=="youtube"){
+				
+				$video_id=get_youtube_thumb_id_from_url($link);
+				if($video_id){
+					$video_image='http://img.youtube.com/vi/'.$video_id.'/mqdefault.jpg';
+				}
+				
+				
+			}elseif($type=="vimeo"){
+				
+				$link_explode = explode( "/", $link);
+				$video_id=end($link_explode);
+				$hash=file_get_contents("http://vimeo.com/api/v2/video/".$video_id.".php");
+				$hash = unserialize($hash);
+				$video_image=$hash[0]['thumbnail_large'];
+				
+			}
+			
+			if(isset($video_image) && !empty($video_image)){
+				echo json_encode(array("success"=>1,"video_image"=>$video_image,"video_id"=>$video_id));
+				die();
+			}else{
+				echo json_encode(array("error"=>"Wrong Video Url"));
 				die();
 			}
 		}

@@ -407,6 +407,10 @@
 	float: left;
 }
 
+#images-list .image-options .video_link_change {
+	width:calc(70% - 67px) !important;
+}
+
  #images-list .image-options textarea { height:60px;}
 
 #images-list .image-options .link-block   input.url-input  {
@@ -451,6 +455,18 @@
 	text-decoration:underline;
 	padding:0px 20px 0px 0px;
 	background: url(../images/edit.png) right 8px no-repeat;
+}
+
+.update_video_link {
+	/* display: inline;
+    line-height: 25px;
+    font-size: 11px;
+    color: #6f889b;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+	cursor:pointer; */
 }
 
 .editimageicon:hover {
@@ -913,7 +929,7 @@
 
 #add-video-popup-options .thumb_block {
 	position:relative;
-	float:left
+	float:left;
 }
 
 #add-video-popup-options .thumb_block img {
