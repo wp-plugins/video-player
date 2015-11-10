@@ -48,7 +48,9 @@ Now you can set your Video Player options, images and use our Video Player.
 
 == Screenshots ==
 
-1.  WordPress Video Player
+1.  WordPress Video Player Demo 1 Playlist View
+2.  WordPress Video Player Demo 2 Single View
+3.  WordPress Video Player Demo 3 Full width Album
 
 == Changelog ==
 
